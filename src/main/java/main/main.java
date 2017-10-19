@@ -9,7 +9,7 @@ import vehicle.Engine;
 public class main{
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
-		Car car = (Car) context.getBean("audi");
+		Car car = (Car) context.getBean("car");
 		car.go();
 	}
 }

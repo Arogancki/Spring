@@ -1,5 +1,6 @@
 package vehicle;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,7 +12,7 @@ public class Engine {
 		this.power = power;
 		return this;
 	}
-	public float getCapacity() {
+	public double getCapacity() {
 		return capacity;
 	}
 	public Engine setCapacity(float capacity) {
@@ -25,15 +26,12 @@ public class Engine {
 		this.type = type;
 		return this;
 	}
+	@Value("${capacity}")
 	int power = 0;
-	float capacity = .0f;
+	@Value("#{T(java.lang.Math).PI}")
+	double capacity = .0f;
 	String type = "Not specified";
 	public Engine(){}
-	public Engine(String type, int power, float capacity){
-		this.power = power;
-		this.capacity = capacity;
-		this.type = type;
-	}
 	void start() {
 		System.out.println("Starting "+this.getType()+" engine: "+this.getPower()+"KM/"+this.getCapacity()+"l.");
 	}

@@ -5,18 +5,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 	<!--  importowanie pakietu: -->
+	<context:annotation-config></context:annotation-config>
 	 <context:component-scan base-package="vehicle"/>
-	 <!-- create inner bean -->
-	<bean id="audi" class="vehicle.Car">
-		<constructor-arg index="0" type="java.lang.String" name="make" value = "Audi"/>
-		<constructor-arg index="1" type="vehicle.Engine" name="engine" ref = "1.8T"/>
-	</bean>
-	<bean id="1.8T" class="vehicle.Engine">
-		<constructor-arg value = "1.8T"/>
-		<constructor-arg value = "225"/>
-		<constructor-arg value = "1.5"/>
-		<property name="power" value="245"/>
-	</bean>
+	 <context:property-placeholder location="file:C:\Users\Artur\Desktop\Spring\Projects\app\external\config.txt"/>
+	
 </beans>
 
 <!-- constructor-arg sluzy do podania argumentu dla konstruktora value="Artur" lub ref przy ref podajemy id innego elementu w xmlu 
