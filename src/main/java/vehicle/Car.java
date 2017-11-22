@@ -34,8 +34,13 @@ public class Car{
 		this.make = make;
 		return this;
 	}
-	public void go() {
+	public void go(int time) {
 		this.getEngine().start();
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			
+		}
 		System.out.println(this.getMake() + " going.");
 	}
 }
