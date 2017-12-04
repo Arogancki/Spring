@@ -17,7 +17,7 @@ public class Car{
 		this.setMake(make);
 	}
 	public Car(String make, float capacity, int power, String type){
-		//this.engine = new Engine(type, power, capacity);
+		this.engine = new Engine(type, power, capacity);
 		this.setMake(make);
 	}
 	public Engine getEngine() {

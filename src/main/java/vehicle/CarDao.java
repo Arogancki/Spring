@@ -1,23 +1,41 @@
 package vehicle;
 
 import java.util.List;
+import javax.sql.DataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
 
-//dostep do bazy danych
-//zapisac i odczytac
-
-//zadeklarowac JDBC template
-//zadeklarowac w binach wyciaganc w mainie i dodac cos potem sciaganac i wyswietlic
 public class CarDao {
+	 private DataSource dataSource;
+	 private JdbcTemplate jdbcTemplateObject;
+	 
+	 public void setDataSource(DataSource dataSource) {
+	      this.dataSource = dataSource;
+	      this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+	} 
+	 
 	public void Add(Car car){
-		
+		String SQL = "insert into cars (make, capacity, power, type) values (?, ?, ?, ?)";
+	    jdbcTemplateObject.update( SQL, car.getMake(), 
+	    		car.getEngine().getCapacity(),
+	    		car.getEngine().getPower(),
+	    		car.getEngine().getType());
+	    System.out.println("Record created");
+	    return;
 	}
-	public Car Get(){
-		
+	public Car Get(String make, int power, String type){
+		 String SQL = "select * from cars where make = ? AND power = ? AND type = ?";
+	      Car car = jdbcTemplateObject.queryForObject(SQL, 
+	         new Object[]{make, power, type}, new CarMapper());
+	      return car;
 	}
 	public List<Car> GetAll(){
-		
+		String SQL = "select * from cars";
+	      return jdbcTemplateObject.query(SQL, new CarMapper());
 	}
-	public void DeleteCar(){
-		
+	public void DeleteCar(String make, int power, String type){
+		String SQL = "delete from cars where make = ? AND power = ? AND type = ?";
+	    jdbcTemplateObject.update(SQL, make, power, type);
+	    System.out.println("Record deleted");
+	    return;
 	}
 }

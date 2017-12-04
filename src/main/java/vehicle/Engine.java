@@ -32,6 +32,11 @@ public class Engine {
 	double capacity = .0f;
 	String type = "Not specified";
 	public Engine(){}
+	public Engine(String type, int power, float capacity){
+		this.type=type;
+		this.power=power;
+		this.capacity=capacity;
+	}
 	void start() {
 		System.out.println("Starting "+this.getType()+" engine: "+this.getPower()+"KM/"+this.getCapacity()+"l.");
 	}
