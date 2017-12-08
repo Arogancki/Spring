@@ -16,9 +16,9 @@ public class CarDao {
 	public void Add(Car car){
 		String SQL = "insert into cars (make, capacity, power, type) values (?, ?, ?, ?)";
 	    jdbcTemplateObject.update( SQL, car.getMake(), 
-	    		car.getEngine().getCapacity(),
-	    		car.getEngine().getPower(),
-	    		car.getEngine().getType());
+	    		0.0,//car.getEngine().getCapacity(),
+	    		1,//car.getEngine().getPower(),
+	    		"null");//car.getEngine().getType());
 	    System.out.println("Record created");
 	    return;
 	}
