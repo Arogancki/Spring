@@ -1,4 +1,4 @@
-package vehicle;
+package com.example.demo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

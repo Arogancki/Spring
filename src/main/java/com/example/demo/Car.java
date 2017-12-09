@@ -1,14 +1,11 @@
-package vehicle;
+package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
 public class Car{
-	@Autowired
-	Engine engine;
-	@Value("#{value.getType()}")
+	Engine engine = new Engine();
 	String make = "car";
 	public Car(){
 		//this.engine = new Engine();

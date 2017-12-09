@@ -13,8 +13,6 @@
 	
 	<aop:aspectj-autoproxy />
 	
-	<!-- Aspect -->
-	<bean id="logAspect" class="vehicle.Profiler" />
 	
 	<!-- dokontekstu dolozyc datasource i transaktion manager -->
 	
@@ -26,7 +24,7 @@
 	</bean>
 	
    <!-- Definition for studentJDBCTemplate bean -->
-   <bean id = "CarDao" class = "vehicle.CarDao">
+   <bean id = "CarDao" class = "com.example.demo.CarDao">
       <property name = "dataSource" ref = "dataSource" />    
    </bean>
 	
