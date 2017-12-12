@@ -1,12 +1,18 @@
-package com.example.demo;
+package com.codenotfound.ws.endpoint;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+@XmlRootElement(name = "Car")
 public class Car{
-	Engine engine = new Engine();
-	String make = "car";
+	//Engine engine = new Engine();
+	public String make = "car";
+	public String type = "";
+	public int power = 0;
+	public float capacity = 0.0;
 	public Car(){
 		//this.engine = new Engine();
 	}
@@ -14,15 +20,10 @@ public class Car{
 		this.setMake(make);
 	}
 	public Car(String make, float capacity, int power, String type){
-		this.engine = new Engine(type, power, capacity);
+		this.capacity = capacity;
+		this.type = type;
+		this.power = power;
 		this.setMake(make);
-	}
-	public Engine getEngine() {
-		return engine;
-	}
-	public Car setEngine(Engine engine) {
-		this.engine = engine;
-		return this;
 	}
 	public String getMake() {
 		return make;
@@ -32,7 +33,6 @@ public class Car{
 		return this;
 	}
 	public void go(int time) {
-		this.getEngine().start();
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {

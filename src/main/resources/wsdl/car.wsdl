@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<wsdl:definitions name="car"
+  targetNamespace="http://codenotfound.com/services/car"
+  xmlns:tns="http://codenotfound.com/services/car" xmlns:types="http://codenotfound.com/types/car"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://codenotfound.com/types/car"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+      attributeFormDefault="unqualified" version="1.0">
+
+      <xsd:element name="car">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="make" type="xsd:string" />
+            <xsd:element name="capacity" type="xsd:float" />
+            <xsd:element name="power" type="xsd:int" />
+            <xsd:element name="type" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="carIn">
+    <wsdl:part name="car" element="types:car" />
+  </wsdl:message>
+
+  <wsdl:message name="carOut">
+    <wsdl:part name="car" element="types:car" />
+  </wsdl:message>
+
+  <wsdl:portType name="Car_PortType">
+    <wsdl:operation name="car_operations">
+      <wsdl:input message="tns:carIn" />
+      <wsdl:output message="tns:carOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="Car_SoapBinding" type="tns:Car_PortType">
+    <soap:binding style="document"
+      transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="car">
+      <soap:operation
+        soapAction="http://codenotfound.com/services/car" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="Car_Service">
+    <wsdl:documentation>Car service</wsdl:documentation>
+    <wsdl:port name="Car_Port" binding="Car_SoapBinding">
+      <soap:address location="http://localhost:9090/codenotfound/ws/car" />
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>
