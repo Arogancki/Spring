@@ -22,5 +22,5 @@ import org.springframework.transaction.annotation.Transactional;
 @EnableJpaRepositories(basePackages="vehicle", entityManagerFactoryRef="emf")
 public interface CarOrmDao extends JpaRepository<Car, Long>{
 	
-	Insert
+	
 }

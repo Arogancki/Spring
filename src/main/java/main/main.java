@@ -15,13 +15,12 @@ public class main{
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		CarOrmDao cd = (CarOrmDao) context.getBean("carOrmDao");
 		
-		
 		Car y = new Car("Audi");
 		cd.save(y);
 		System.out.print("zapisano w bazie\n");
 		for (Car x : cd.findAll()){
 			System.out.println("Z bazy marka: "+x.getMake());
-		}																													                                                    System.out.println("Z bazy marka: "+y.getMake());
+		}																													                                                    																														System.out.println("Z bazy marka: "+y.getMake());
 		System.out.println("koniec");
 		/*
 		// 1.8
